@@ -1,5 +1,20 @@
+<?php
+    // Detect the current user's role
+    $role = $_SESSION['role'] ?? '';
 
-<footer class="site-footer">
+    // Home page always uses the student green theme
+    $current_page = basename($_SERVER['PHP_SELF']);
+
+    if ($current_page == 'index.php') {
+        $footer_theme = 'footer-student';
+    } elseif ($role == 'admin') {
+        $footer_theme = 'footer-admin';
+    } else {
+        $footer_theme = 'footer-student';
+    }
+?>
+
+<footer class="site-footer <?= $footer_theme ?>">
     <div class="footer-section footer-brand">
         <img class="footer-logo"
              src="/student_management/images/logo.png"

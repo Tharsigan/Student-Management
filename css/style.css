@@ -18,7 +18,19 @@ body {
 main {
     flex: 1;
 }
+/*ROLE-BASED FOOTER THEMES */
 
+/* Admin footer - Dark blue */
+.site-footer.footer-admin {
+    background-color: #123b70;
+    border-top: 3px solid #e6b422;
+}
+
+/* Student and home page footer - Dark green */
+.site-footer.footer-student {
+    background-color: #112816;
+    border-top: 3px solid #e6b422;
+}
 /* Footer */
 .site-footer {
     margin-top: auto;

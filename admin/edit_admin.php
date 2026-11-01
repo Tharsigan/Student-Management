@@ -38,29 +38,101 @@
     <title>Student Hub | Edit Admin</title>
     <link rel="stylesheet" href="/student_management/css/style.css">
     <style>
-        .content{
-            margin: 20px;
-            background-color: #a5e7d6;
-            border: 1px solid black;
-            padding: 20px;
+        /* Main form card */
+        body .content {
+            width: 500px !important;
+            max-width: calc(100% - 60px);
+            box-sizing: border-box;
+
+            /* Left alignment and vertical spacing */
+            margin: 30px 0 40px 30px;
+
+            padding: 30px;
+
+            background-color: #ffffff;
+            border: 1px solid #dce8e0;
+            border-top: 4px solid #e6b422;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(4, 63, 46, 0.08);
         }
-        .content form{
-            width: 350px;
-            margin-left: 20px;
-            background-color: aqua;
-            border-radius: 10px;
-            border: 1px solid black;
-            padding: 20px;
+
+        /* Heading */
+        body .content h1 {
+            margin: 0 0 30px;
+            text-align: left;
+            font-size: 26px;
+            color: #043f2e;
         }
-        .content a{
-            text-decoration: none;
-            background-color: #e4b9a5;
-            color: black;
-            padding: 10px 20px;
+
+        /* Form rows */
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            flex: 0 0 85px;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Input fields */
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            flex: 1;
+            min-width: 0;
+            height: 36px;
+            padding: 8px 10px;
+            border: 1px solid #cbd5d1;
             border-radius: 5px;
+            font-size: 14px;
+            outline: none;
         }
-        form input[type="submit"]{
-            padding: 10px;
+
+        .form-group input:focus {
+            border-color: #043f2e;
+            box-shadow: 0 0 0 2px rgba(4, 63, 46, 0.1);
+        }
+
+        /* Password visibility button */
+        .form-group input[type="button"] {
+            padding: 7px 10px;
+            border: 1px solid #cbd5d1;
+            border-radius: 5px;
+            background-color: #f1f5f9;
+            color: #123b70;
+            cursor: pointer;
+        }
+
+        /* Submit button */
+        .submit-button {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 11px;
+            border: none;
+            border-radius: 6px;
+            background-color: #123b70;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #0b2a52;
+        }
+
+        /* Back link */
+        .back-link {
+            display: block;
+            margin-top: 22px;
+            text-align: left;
+            color: #123b70;
         }
     </style>
     <script>
@@ -75,29 +147,28 @@
     </script>
 </head>
 <body>
-    <?php
-        include "../includes/admin-navbar.php";
-    ?>
     <div class="content">
         <h1>Edit Admin</h1>
         <br>
         <form action="edit_admin.php?id=<?php echo $admin_id; ?>" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($admin['name']); ?>" required>
-            <br><br>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($admin['email']); ?>" required>
-            <br><br>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-            <input type="button" onclick="togglePassword()" value="👁">
-            <br><br>
-            <input type="submit" name="submit" value="Update Admin">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($admin['name']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($admin['email']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+                <input type="button" onclick="togglePassword()" value="👁">
+            </div>
+            <input class="submit-button" type="submit" name="submit" value="Update Admin">
         </form>
-        <br><br>
-
-        <a href="admins.php">Back to Admin</a>
         <br>
+        <a class="back-link" href="admins.php">Back to Admin</a>
+
     </div>
     <?php
         include "../includes/footer.php";
