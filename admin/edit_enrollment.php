@@ -38,43 +38,113 @@
     <title>Student Hub | Edit Enrollment</title>
     <link rel="stylesheet" href="/student_management/css/style.css">
     <style>
-        .content{
-            background-color: #a5e7d6;
-            border: 1px solid black;
-            margin: 20px;
-            padding: 20px;
+        /* Main form card */
+        body .content {
+            width: 550px !important;
+            max-width: calc(100% - 60px);
+            box-sizing: border-box;
+
+            /* Left alignment and vertical spacing */
+            margin: 30px 0 40px 30px;
+
+            padding: 30px;
+
+            background-color: #ffffff;
+            border: 1px solid #dce8e0;
+            border-top: 4px solid #e6b422;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(4, 63, 46, 0.08);
         }
-        .content form{
-            width: 300px;
-            margin-left: 20px;
-            background-color: aqua;
-            border-radius: 10px;
-            border: 1px solid black;
-            padding: 20px;
+
+        /* Heading */
+        body .content h1 {
+            margin: 0 0 30px;
+            text-align: left;
+            font-size: 26px;
+            color: #043f2e;
         }
-        .content a{
-            text-decoration: none;
-            background-color: #e4b9a5;
-            color: black;
-            padding: 10px 20px;
+
+        /* Form rows */
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            flex: 0 0 95px;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Input fields */
+        .form-group input[type="date"],
+        .form-group select {
+            flex: 1;
+            min-width: 0;
+            height: 36px;
+            padding: 8px 10px;
+            border: 1px solid #cbd5d1;
             border-radius: 5px;
+            font-size: 14px;
+            outline: none;
         }
-        form input[type="submit"]{
-            padding: 10px;
+
+        .form-group input:focus {
+            border-color: #043f2e;
+            box-shadow: 0 0 0 2px rgba(4, 63, 46, 0.1);
         }
+
+        /* Password visibility button */
+        .form-group input[type="button"] {
+            padding: 7px 10px;
+            border: 1px solid #cbd5d1;
+            border-radius: 5px;
+            background-color: #f1f5f9;
+            color: #123b70;
+            cursor: pointer;
+        }
+
+        /* Submit button */
+        .submit-button {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 11px;
+            border: none;
+            border-radius: 6px;
+            background-color: #123b70;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #0b2a52;
+        }
+
+        /* Back link */
+        .back-link {
+            display: block;
+            margin-top: 22px;
+            text-align: left;
+            color: #123b70;
+        }
+
     </style>
 
 </head>
 <body>
-    <?php
-        include "../includes/admin-navbar.php";
-    ?>
     <div class="content">
         <h1>Edit Enrollment</h1>
         <br>
         <form action="edit_enrollment.php?id=<?php echo $enrollment_id; ?>" method="POST">
-            <label for="student_id">Student:</label>
-            <select name="student_id" id="student_id" required>
+            <div class="form-group">
+                <label for="student_id">Student:</label>
+                <select name="student_id" id="student_id" required>
                 <?php
                     $result = $conn->query("SELECT s.student_id, u.name FROM students s JOIN users u ON s.user_id = u.user_id");
                     while($row = $result->fetch_assoc()){
@@ -87,8 +157,9 @@
                             </option>";
                     }
                 ?>
-            </select>
-            <br><br>
+                </select>
+            </div>
+            <div class="form-group">
             <label for="course_id">Course:</label>
             <select name="course_id" id="course_id" required>
                 <?php
@@ -104,23 +175,23 @@
                     }
                 ?>
             </select>
-            <br><br>
-            <label for="enrollment_date">Enrollment Date:</label>
-            <input type="date" name="enrollment_date" id="enrollment_date" value="<?php echo $enrollment['enrollment_date']; ?>" required>
-            <br><br>
-            <label for="status">Status:</label>
-            <select name="status" id="status" required>
-                <option value="active" <?php if($enrollment['status'] == 'active') echo 'selected'; ?>>Active</option>
-                <option value="completed" <?php if($enrollment['status'] == 'completed') echo 'selected'; ?>>Completed</option>
-                <option value="dropped" <?php if($enrollment['status'] == 'dropped') echo 'selected'; ?>>Dropped</option>
-            </select>
-            <br><br>
-            <input type="submit" name="submit" value="Update Enrollment">
+            </div>
+            <div class="form-group">
+                <label for="enrollment_date">Enrollment Date:</label>
+                <input type="date" name="enrollment_date" id="enrollment_date" value="<?php echo $enrollment['enrollment_date']; ?>" required>
+            </div>
+                <div class="form-group">
+                <label for="status">Status:</label>
+                <select name="status" id="status" required>
+                    <option value="active" <?php if($enrollment['status'] == 'active') echo 'selected'; ?>>Active</option>
+                    <option value="completed" <?php if($enrollment['status'] == 'completed') echo 'selected'; ?>>Completed</option>
+                    <option value="dropped" <?php if($enrollment['status'] == 'dropped') echo 'selected'; ?>>Dropped</option>
+                </select>
+            </div>
+            <input class="submit-button" type="submit" name="submit" value="Update Enrollment">
         </form>
-        <br><br>
 
-        <a href="enrollments.php">Back to Enrollments</a>
-        <br>
+        <a class="back-link" href="enrollments.php">Back to Enrollments</a>
     </div>
     <?php
         include "../includes/footer.php";

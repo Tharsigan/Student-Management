@@ -26,7 +26,6 @@
             margin: 0;
             background-color: #f5f7fb;
             color: #263247;
-            font-family: Arial, sans-serif;
         }
 
         /* Welcome section */

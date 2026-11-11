@@ -48,27 +48,144 @@
     <link rel="icon" type="image/png" href="/student_management/images/logo.png">
     <title>Student Hub | Login</title>
     <style>
-        *{
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f2f7f4;
+            color: #173d30;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 380px;
+            padding: 32px;
+            background-color: #ffffff;
+            border: 1px solid #dce8e0;
+            border-top: 4px solid #e6b422;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(4, 63, 46, 0.08);
+        }
+
+        .logo {
+            display: block;
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            margin: 0 auto 12px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
             text-align: center;
+            font-size: 25px;
+            color: #043f2e;
         }
-        .container{
-            width: 300px;
-            background-color: lightcoral;
-            margin: auto;
-            padding: 30px;
-            border-radius: 20px;
+
+        .subtitle {
+            margin: 0 0 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7c74;
         }
-        button{
-            padding: 10px;
-            background-color: blueviolet;
-            color: white;
-            font-size: 15px;
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #244c3d;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #cbd9d0;
             border-radius: 5px;
-            cursor: pointer;
+            font-size: 14px;
+            outline: none;
+            background-color: #ffffff;
         }
-        button:hover{
-            background-color: darkblue;
-            color: white;
+
+        .form-group input:focus {
+            border-color: #087f5b;
+            box-shadow: 0 0 0 2px rgba(8, 127, 91, 0.12);
+        }
+
+        .password-wrapper {
+            display: flex;
+            gap: 7px;
+        }
+
+        .password-wrapper .passwordInput {
+            flex: 4;
+            min-width: 0;
+        }
+
+        .toggle-password {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #cbd9d0;
+            border-radius: 5px;
+            background-color: #f2f7f4;
+            cursor: pointer;
+            color: #043f2e;
+        }
+
+        .toggle-password:hover {
+            background-color: #e1eee6;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #043f2e;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .login-button:hover {
+            background-color: #086448;
+        }
+
+        .register-link {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #63756c;
+        }
+
+        a {
+            color: #087f5b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .home-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
         }
     </style>
     <script>
@@ -83,25 +200,35 @@
     </script>
 </head>
 <body>
+    <div class="login-container">
+        <img class="logo" src="/student_management/images/logo.png" alt="Student Hub Logo">
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">Login to your Student Hub account</p>
 
-   <h1>Welcome Back!</h1>
-   <h2>Login to your account</h2>
-    <div class="container">
         <form action="login.php" method="post">
-            <label for="email">Email</label> <br>
-            <input type="text" id="email" name="email"> <br><br>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+            </div>
 
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password">
-            <input type="button" onclick="togglePassword()" value="👁"> <br><br>
-
-            <button name="login" id="login" value="login">Login</button>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required class="passwordInput">
+                    <input type="button" onclick="togglePassword()" class="toggle-password" value="Show"> 
+                </div>
+            </div>
+            <button name="login" id="login" value="login" class="login-button">Login</button>
         </form>
 
-        <p>Don't have an account?</p>
-        <a href="register.php">Register</a>
+        <p class="register-link">Don't have an account?
+            <a href="register.php">Register</a>
+        </p>
+
+        <a class="home-link" href="index.php">&larr; Back to Home</a>
     </div>
 
-    <br><a href="index.php">← Home</a>
+    
 </body>
 </html>
+

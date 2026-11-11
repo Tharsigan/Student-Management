@@ -10,33 +10,6 @@
     <link rel="icon" type="image/png" href="/student_management/images/logo.png">
     <title>Student Hub | Student</title>
     <link rel="stylesheet" href="/student_management/css/style.css">
-    <style>
-        td,th{
-            padding: 10px;
-            background-color: #a5e7d6;
-            border: 1px solid black;
-        }
-        .content{
-            margin: 20px;
-        }
-        .content a{
-            text-decoration: none;
-            background-color: #e4b9a5;
-            color: black;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-        #search{
-            padding: 5px;
-            width: 200px;
-        }
-        .error{
-            color: red;
-        }
-        .success{
-            color: green;
-        }
-    </style>
 </head>
 <body>
     <?php
@@ -46,7 +19,7 @@
         <h1>Student Management</h1>
         <br>
         <label for="search">Search:</label>
-        <input type="text" id="search" oninput="liveSearch()">
+        <input class="searchbtn" type="text" id="search" oninput="liveSearch()">
         <br><br>
     
         <?php
@@ -61,9 +34,9 @@
         }
         ?>
 
-        <a href="add_student.php">Add Student</a>
+        <a class="addbtn" href="add_student.php">Add Student</a>
         <br><br>
-        <table border="1" id="tableID">
+        <table id="tableID" class="tadmin dtable">
             <thead>
                 <tr>
                     <th>Student Id</th>
@@ -87,8 +60,8 @@
                             <td>{$row['mobile']}</td>
                             <td>{$row['email']}</td>
                             <td>
-                                <a href='edit_student.php?id={$row['student_id']}'>Edit</a>
-                                <a href='delete_student.php?id={$row['student_id']}' onclick=\"return confirm('Delete this student record?')\">Delete</a>
+                                <a class='editbtn' href='edit_student.php?id={$row['student_id']}'>Edit</a>
+                                <a class='deletebtn' href='delete_student.php?id={$row['student_id']}' onclick=\"return confirm('Delete this student record?')\">Delete</a>
                             </td>
                         </tr>
                         ";

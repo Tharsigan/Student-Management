@@ -10,23 +10,6 @@
     <link rel="icon" type="image/png" href="/student_management/images/logo.png">
     <title>Student Hub | Result</title>
     <link rel="stylesheet" href="/student_management/css/style.css">
-    <style>
-        td,th{
-            padding: 10px;
-            background-color: #a5e7d6;
-            border: 1px solid black;
-        }
-        .content{
-            margin: 20px;
-        }
-        .content a{
-            text-decoration: none;
-            background-color: #e4b9a5;
-            color: black;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 <body>
     <?php
@@ -36,11 +19,11 @@
         <h1>Result Management</h1>
         <br>
         <label for="search">Search:</label>
-        <input type="text" id="search" oninput="liveSearch()">
+        <input class="searchbtn" type="text" id="search" oninput="liveSearch()">
         <br><br>
-        <a href="add_result.php">Add Result</a>
+        <a class="addbtn" href="add_result.php">Add Result</a>
         <br><br>
-        <table border="1" id="tableID">
+        <table class="tadmin dtable" id="tableID">
             <thead>
                 <tr>
                     <th>Result Id</th>
@@ -66,8 +49,8 @@
                             <td>{$row['marks']}</td>
                             <td>{$row['grade']}</td>
                             <td>
-                                <a href='edit_result.php?id={$row['result_id']}'>Edit</a>
-                                <a href='delete_result.php?id={$row['result_id']}' onclick=\"return confirm('Delete this result record?')\">Delete</a>
+                                <a class='editbtn' href='edit_result.php?id={$row['result_id']}'>Edit</a>
+                                <a class='deletebtn' href='delete_result.php?id={$row['result_id']}' onclick=\"return confirm('Delete this result record?')\">Delete</a>
                             </td>
                         </tr>
                         ";

@@ -44,27 +44,156 @@
     <link rel="icon" type="image/png" href="/student_management/images/logo.png">
     <title>Student Hub | Register</title>
     <style>
-        *{
-            text-align: center;
+        * {
+            box-sizing: border-box;
         }
-        .container{
-            width: 300px;
-            background-color: lightblue;
-            margin: auto;
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f2f7f4;
+            color: #173d30;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 400px;
             padding: 30px;
-            border-radius: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dce8e0;
+            border-top: 4px solid #e6b422;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(4, 63, 46, 0.08);
         }
-        button{
-            padding: 10px;
-            background-color: blueviolet;
-            color: white;
-            font-size: 15px;
+
+        .logo {
+            display: block;
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin: 0 auto 12px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            text-align: center;
+            font-size: 25px;
+            color: #043f2e;
+        }
+
+        .subtitle {
+            margin: 0 0 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7c74;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #244c3d;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #cbd9d0;
             border-radius: 5px;
+            font-size: 14px;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #087f5b;
+            box-shadow: 0 0 0 2px rgba(8, 127, 91, 0.12);
+        }
+
+        .password-wrapper {
+            display: flex;
+            gap: 7px;
+        }
+
+        .password-wrapper input {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .toggle-password {
+            padding: 0 10px;
+            border: 1px solid #cbd9d0;
+            border-radius: 5px;
+            background-color: #f2f7f4;
+            color: #043f2e;
             cursor: pointer;
         }
-        button:hover{
-            background-color: darkblue;
-            color: white;
+
+        .toggle-password:hover {
+            background-color: #e1eee6;
+        }
+
+        .register-button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 3px;
+            border: none;
+            border-radius: 5px;
+            background-color: #043f2e;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .register-button:hover {
+            background-color: #086448;
+        }
+
+        .message {
+            margin-bottom: 17px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff4e5;
+            color: #8a4b08;
+            font-size: 13px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .login-link {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #63756c;
+        }
+
+        a {
+            color: #087f5b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .home-link {
+            display: block;
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
         }
     </style>
     <script>
@@ -82,6 +211,23 @@
                 confirmPassword.type = "password";
             }
         }
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+            if (password.length < 8) {
+                alert("Password must have at least 8 characters!");
+                return false;
+            }
+            if (password.match(/[0-9]/) == null) {
+                alert("Password must contain at least one number!");
+                return false;
+            }
+            if (password.match(/[!@#$%^&*]/) == null) {
+                alert("Password must contain at least one special character!");
+                return false;
+            }
+
+         return true;
+        }
         function validateForm() {
             let password = document.getElementById("password").value;
             let confirmPassword = document.getElementById("confirm-password").value;
@@ -91,36 +237,69 @@
             }
             return true;
         }   
-
     </script>
 </head>
 <body>
+    
+    <div class="register-container">
 
-   <h1>Create Your Account</h1>
-   <h2>Register to access studentHub</h2>
-    <div class="container">
-        <form action="register.php" method="post">
-            <label for="name">Full Name</label> <br>
-            <input type="text" id="name" name="name"> <br><br>
+        <img class="logo" src="/student_management/images/logo.png" alt="Student Hub Logo">
 
-            <label for="email">Email</label> <br>
-            <input type="text" id="email" name="email"> <br><br>
+        <h1>Create Your Account</h1>
+        <p class="subtitle">Join Student Hub to manage your academic journey</p>
 
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password">
-            <input type="button" onclick="togglePassword()" value="👁"> <br><br>
+        <form action="register.php" method="post"
+      onsubmit="return validatePassword() && validateForm()">
 
-            <label for="confirm-password">Confirm Password</label><br>
-            <input type="password" id="confirm-password" name="confirm-password">
-            <input type="button" onclick="togglePassword()" value="👁"> <br><br>
+            <div class="form-group">
+            <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="name" required>
+            </div>
 
-            <button name="register" id="register" value="register" onclick="return validateForm()">Register</button>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Create a password" autocomplete="new-password" required>
+
+                    <button type="button" class="toggle-password" onclick="togglePassword('password', this)">
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+
+                <div class="password-wrapper">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" autocomplete="new-password" required>
+
+                    <button type="button" class="toggle-password" onclick="togglePassword('confirm-password', this)">
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" name="register" value="register" class="register-button">
+                Create Account
+            </button>
+
         </form>
 
-        <p>Already have an account?</p>
-        <a href="login.php">Login</a>
-    </div>
+        <p class="login-link">
+            Already have an account?
+            <a href="login.php">Login here</a>
+        </p>
 
-    <br><a href="index.php">← Home</a>
+        <a class="home-link" href="index.php">
+            &larr; Back to Home
+        </a>
+
+    </div>
 </body>
 </html>

@@ -4,6 +4,7 @@
 html, body {
     margin: 0;
     min-height: 100%;
+    font-family: Arial, sans-serif;
 }
 
 body {
@@ -11,24 +12,96 @@ body {
     display: flex;
     flex-direction: column;
 }
-/*--------------footer-----------------*/
-footer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 5px;
-    width: 100%;
-}
-footer div {
-    background-color: black;
-    color: white;
-    text-align: center;
-    flex: 1;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
+/*----------------FOOTER------------------*/
 
+/* Main content takes the available space */
+main {
+    flex: 1;
 }
+/*ROLE-BASED FOOTER THEMES */
+
+/* Admin footer - Dark blue */
+.site-footer.footer-admin {
+    background-color: #123b70;
+    border-top: 3px solid #e6b422;
+}
+
+/* Student and home page footer - Dark green */
+.site-footer.footer-student {
+    background-color: #112816;
+    border-top: 3px solid #e6b422;
+}
+/* Footer */
+.site-footer {
+    margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 35px;
+
+    padding: 15px 7% 20px;
+    background-color: #112816;
+    color: #ffffff;
+    border-top: 3px solid #e6b422;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-brand {
+    flex: 1.2;
+}
+.footer-brand p {
+    line-height: 1.2;
+    margin: 4px 0;
+}
+
+.site-footer .footer-copyright {
+    margin-top: 15px;
+}
+
+.footer-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.site-footer h3 {
+    font-size: 17px;
+    margin: 5px 0 18px;
+    font-weight: 600;
+}
+
+.site-footer p {
+    font-size: 14px;
+    line-height: 1.2;
+    color: #d6e4dd;
+    margin: 8px 0;
+}
+
+.site-footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+    color: #e6b422;
+}
+
+.site-footer .footer-copyright {
+    font-size: 12px;
+    color: #a9c1b5;
+    margin-top: 10px;
+}
+
 
 /*----------------- LOGO AND TITLE -----------------------*/
 
@@ -227,4 +300,199 @@ footer div {
 .admin-navbar .logout-link:hover {
     background: #a92f2f;
     color: white;
+}
+
+/* ========================================STUDENT PAGE LAYOUT======================================== */
+
+.content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.content-section {
+    background-color: #ffffff;
+    padding: 28px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    border: 1px solid #e5ebe7;
+    box-shadow: 0 3px 12px rgba(4, 63, 46, 0.06);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #e6b422;
+}
+
+.section-heading h1 {
+    margin: 0;
+    color: #043f2e;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.section-heading p {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e2e8e4;
+    border-radius: 8px;
+}
+
+/*TABLE */
+
+.dtable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-size: 14px;
+    text-align: left;
+}
+
+
+.dtable thead {
+    background-color: #043f2e;
+    color: #ffffff;
+}
+
+.dtable th {
+    padding: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    border: none;
+}
+
+.dtable td {
+    padding: 15px 16px;
+    color: #334155;
+    border-bottom: 1px solid #e8eeea;
+    vertical-align: middle;
+}
+
+.dtable tbody tr:nth-child(even) {
+    background-color: #f6faf7;
+}
+
+.dtable tbody tr:hover {
+    background-color: #edf6f0;
+    transition: background-color 0.2s ease;
+}
+
+.dtable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.empty-message {
+    padding: 30px !important;
+    text-align: center;
+    color: #64748b !important;
+    font-size: 14px;
+}
+/*==================ADMIN PAGE LAYOUTS=========================================*/
+.tadmin thead {
+    background-color: #123b70;
+    color: #ffffff;
+}
+
+.searchbtn {
+    padding: 10px 14px;
+    width: 250px;
+    max-width: 100%;
+    border: 1px solid #cbd5d1;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.searchbtn:focus {
+    border-color: #043f2e;
+    box-shadow: 0 0 0 3px rgba(4, 63, 46, 0.1);
+}
+
+.content label {
+    color: #334155;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Add Student button */
+.addbtn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #123b70;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.addbtn:hover {
+    background-color: #0b2a52;
+}
+
+.deletebtn,
+.editbtn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 12px;
+    margin: 3px 3px 3px 0;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.editbtn{
+    background-color: #123b70;
+    color: #ffffff;
+}
+
+.editbtn:hover {
+    background-color: #0b2a52;
+}
+
+.deletebtn {
+    background-color: #ffffff;
+    color: #b42318;
+    border: 1px solid #b42318;
+}
+
+.deletebtn:hover {
+    background-color: #fef2f2;
+}
+
+.error {
+    color: #b42318;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+}
+
+.success {
+    color: #166534;
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin: 15px 0;
 }

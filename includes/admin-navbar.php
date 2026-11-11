@@ -2,18 +2,6 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Management System</title>
-
-    <link rel="stylesheet" href="/student_management/css/style.css">
-</head>
-<body>
-
-
 <header class="main-header-admin">
 
     <div class="brand">
@@ -40,7 +28,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
             <a href="/student_management/admin/students.php"
                class="nav-link <?= $current_page == 'students.php' ? 'active' : '' ?>">
-                <span class="nav-icon">♙</span> Courses
+                <span class="nav-icon">♙</span> Students
             </a>
 
             <a href="/student_management/admin/course.php"
@@ -72,5 +60,3 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 </header>
 
-</body>
-</html>
